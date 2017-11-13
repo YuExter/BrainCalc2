@@ -12,6 +12,7 @@
 		538D05571FB849A2008FEDBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 538D05551FB849A2008FEDBB /* Main.storyboard */; };
 		538D05591FB849A2008FEDBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 538D05581FB849A2008FEDBB /* Assets.xcassets */; };
 		538D055C1FB849A2008FEDBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 538D055A1FB849A2008FEDBB /* LaunchScreen.storyboard */; };
+		538D05641FB849BD008FEDBB /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D05631FB849BD008FEDBB /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		538D05581FB849A2008FEDBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		538D055B1FB849A2008FEDBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		538D055D1FB849A2008FEDBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		538D05631FB849BD008FEDBB /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				538D05581FB849A2008FEDBB /* Assets.xcassets */,
 				538D055A1FB849A2008FEDBB /* LaunchScreen.storyboard */,
 				538D055D1FB849A2008FEDBB /* Info.plist */,
+				538D05631FB849BD008FEDBB /* CalculatorBrain.swift */,
 			);
 			path = CalculatorBrain;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				538D05641FB849BD008FEDBB /* CalculatorBrain.swift in Sources */,
 				538D05541FB849A2008FEDBB /* ViewController.swift in Sources */,
 				538D05521FB849A2008FEDBB /* AppDelegate.swift in Sources */,
 			);
