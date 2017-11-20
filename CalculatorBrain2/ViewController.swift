@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var MDisplay: UILabel!
     
     var userInTheMiddleOfTyping: Bool = false
     
@@ -20,7 +21,6 @@ class ViewController: UIViewController {
         if userInTheMiddleOfTyping {
             if self.display.text! == "0" {
                 self.display.text = digit
-                self.userInTheMiddleOfTyping = true
             } else {
                 let textCurrentlyDisplay = self.display.text!
                 self.display.text = textCurrentlyDisplay + digit
@@ -33,8 +33,28 @@ class ViewController: UIViewController {
     
     @IBAction func touchClearButton(_ sender: UIButton) {
         self.brain.performOperation(sender.currentTitle!)
-        self.display.text = "0"
+        let (result, _) = brain.evaluate()
         self.userInTheMiddleOfTyping = false
+        self.displayValue = result!
+        self.MDisplay.text = "M = 0"
+    }
+    
+    @IBAction func eraseDigit(_ sender: UIButton) {
+        if(self.userInTheMiddleOfTyping) {
+            var displayedText = display.text!
+            switch displayedText.count {
+            case let count where count > 1:
+                displayedText.remove(at: displayedText.index(before: displayedText.endIndex))
+                self.display.text = displayedText
+            case let count where count == 1:
+                self.display.text = "0"
+            default:
+                break
+            }
+        } else {
+            brain.undo()
+            self.updateUI()
+        }
     }
     
     @IBAction func touchFloatDot() {
@@ -51,6 +71,19 @@ class ViewController: UIViewController {
             self.display.text = textCurrentDisplay + "."
             self.userInTheMiddleOfTyping = true
         }
+    }
+    
+    @IBAction func setVariable() {
+        self.brain.setOperand(variable: "M")
+        self.userInTheMiddleOfTyping = false
+    }
+    
+    @IBAction func evaluateVariable(_ sender: UIButton) {
+        let variableValues: [String: Double] = ["M": self.displayValue]
+        self.MDisplay.text = "M = \(displayValue)"
+        let (result, _) = brain.evaluate(using: variableValues)
+        self.userInTheMiddleOfTyping = false
+        self.displayValue = result!
     }
     
     var displayValue: Double {
@@ -71,14 +104,14 @@ class ViewController: UIViewController {
         }
         
         if let mathSymbol = sender.currentTitle {
-            brain.performOperation(mathSymbol)
+            brain.addOperation(mathSymbol)
         }
         
-        if let result = brain.result {
-            self.displayValue = result
-        }
+        self.updateUI()
     }
-
-
+    
+    func updateUI() {
+        let (result, _) = brain.evaluate()
+        displayValue = result!
+    }
 }
-
